@@ -3,50 +3,8 @@ using System.Drawing.Drawing2D;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Reflection;
-//using CustomLibs;
 using System.Timers;
 using System.Runtime.InteropServices;
-
-// Folderwatch v1.6.0:	Use namespace for custom controls to show up in Toolbox
-//						Add HyperLogView control
-// Folderwatch v1.6.1:	Optimize HyperLogView visuals
-// Folderwatch v1.6.2:	Add HyperTextBox
-// Folderwatch v1.7.7:	Each log item now has unique index, not just parents
-//						So subitems can now be updated
-// Folderbot v1.8.3:	Add smooth scrolling to hyperlogview
-//						Add smooth animation to sliders and scrollbars
-//						page up/down, mouse hold-down page scrolling
-// Folderbot v1.8.4:	Tune smooth scrolling
-// Folderbot v1.8.6:	Fix listbox not repainting if no scroll index change
-//						Draw dimmed shades for disabled controls
-// Folderbot v1.8.7:	Don't defer HyperTextBox update for too long
-// Folderbot v1.9.0:	Add RoundedDataGridView
-// SimplePixViewer v3.2.5	Change Slider value from int to decimal
-//							Add class to link slider and spinner
-// Folderbot v1.9.1:		Add smooth animation to toggle bubutton
-//						Add colored radio buttons
-// Folderbot v1.9.2		Add mouse scroll to RoundedDataGridView
-// Folderbot v1.9.4		Add clipboard copy function to HyperLogView
-// Folderbot v1.9.5		Add RoundedTextBox and RoundedTextBox with basic linkages
-// Folderbot v1.9.7		Add custom checkbox in RoundedDataGridView
-//						Use IVisualParameters for color settings
-//						Separate OnPaintBackground from OnPaint
-// Folderbot v1.9.8		Rounded HyperLogView
-//						Fine adjustment of rounded pen paths
-//						Move HyperLogView BackColor change inside Visuals
-//						Unify/equalize shape handling across controls
-// Folderbot v1.9.9		Add RoundedCheckBox
-//						Add scrolling effect to spinner
-// SimplePixViewer v3.2.9	Add mousewheel control to slider, spinner, toggle
-//							Fix RoundedSpinner startup display formatting
-//							Add Scroll event to SliderBase and ScrollBase
-//							SliderSpinnerLink is now aware of scroll event in SliderBase
-// Folderbot v2.0.0		Optimize RoundedDataGridView up-scrolling lag
-// SimplePixViewer v3.3.0	SliderBase.ScrollValue snap to step before returning
-// SimplePixViewer v3.5.1	Fix ColorRadioButton checked/unchecked color
-// Minnow	v1.0.0		Fix HyperLogView non-deferred not updating right away
-//						Fix HyperTextBox not hiding caret in some instances
-// SimplePixViewer v3.6.3	Replace MultimediaTimer with System.Timers.Timer
 
 // namespace is needed for controls to display in IDE Toolbox
 namespace CustomControls {
