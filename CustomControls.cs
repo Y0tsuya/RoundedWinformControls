@@ -4283,10 +4283,12 @@ namespace CustomControls {
 		private Bitmap DisplayImage;
 		private Bitmap InputImage;
 		public bool Resizing;
+		private object ImageMutex;
 		//Graphics gr;
 
 		public SynchronousPictureBox() {
 			PaintDone = new AutoResetEvent(false);
+			ImageMutex = new object();
 		}
 
 		protected override void CreateHandle() {
@@ -4309,7 +4311,9 @@ namespace CustomControls {
 
 		public void UpdateToDisplay() {
 			if (InputImage != null) {
-				CopyBitmap(InputImage, DisplayImage);
+				lock (ImageMutex) {
+					CopyBitmap(InputImage, DisplayImage);
+				}
 				this.Invalidate();
 				//this.Refresh();
 			}
@@ -4319,8 +4323,10 @@ namespace CustomControls {
 			//base.OnPaint(pe);
 			if (DisplayImage != null) {
 				Rectangle destRect = new Rectangle(0, 0, ClientSize.Width, ClientSize.Height);
-				Rectangle sourceRect = new Rectangle(0, 0, DisplayImage.Width, DisplayImage.Height);
-				PaintBitmap(DisplayImage, sourceRect, pe.Graphics, destRect);
+				lock (ImageMutex) {
+					Rectangle sourceRect = new Rectangle(0, 0, DisplayImage.Width, DisplayImage.Height);
+					PaintBitmap(DisplayImage, sourceRect, pe.Graphics, destRect);
+				}
 				PaintDone.Set();
 			}
 		}
